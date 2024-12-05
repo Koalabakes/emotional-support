@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Main
 {
-    static String[] goodBye = {"Bye.", "Until next time.", "See you.", "Goodbye."};
+    static String[] goodBye = {"Bye. Bye. Bye.", "Until next time!!!", "See you later alligator!!", "See you on the flip side!!"};
 
     static Counselor Moua = new Counselor("Mr.Moua", "bmoua@pleasantonusd.net");
     static Counselor Hashimi = new Counselor("Ms.Hashimi", "zhashimi@pleasantonusd.net");
@@ -37,6 +37,16 @@ public class Main
 
                                 if(ifToodles(userResp) == true){
                                         break;
+                                }
+
+                                while(!userResp.contains("yes") && !userResp.contains("no")){
+                                        System.out.println("Would you like to schedule an appointment with the counselor: yes or no?");
+                                        userResp = in.nextLine();
+                                        userResp.toLowerCase();
+
+                                        if(ifToodles(userResp) == true){
+                                              break;
+                                      }
                                 }
 
                                 if(userResp.contains("yes")){
@@ -204,6 +214,16 @@ public class Main
 
                                              if(ifToodles(userResp) == true){
                                                 break;
+                                                }
+
+                                        while(!userResp.contains("yes") && !userResp.contains("no")){
+                                                System.out.println("Would you like to schedule an appointment with the counselor: yes or no?");
+                                                userResp = in.nextLine();
+                                                userResp.toLowerCase();
+
+                                                if(ifToodles(userResp) == true){
+                                                      break;
+                                              }
                                         }
                                              if(userResp.contains("yes")){
                                                   System.out.println("I think u should talk to the school counselor");
@@ -327,8 +347,12 @@ public class Main
        public static boolean ifToodles(String userResp){
                 userResp.toLowerCase();
                 if(userResp.contains("toodles")){
-                int rand = (int)(Math.random()*4);
-                System.out.println(goodBye[rand]);
+                        int rand = (int)(Math.random()*4);
+
+                        final String BLUE_TEXT = "\u001B[34m";
+                        final String RESET_TEXT = "\u001B[0m";
+
+                        System.out.println(BLUE_TEXT + goodBye[rand] + RESET_TEXT);
                         return true;
                 }
                 return false;
